@@ -1,6 +1,0 @@
-{
-"pluginName": "DHCP plugin",
-"version": "1.0.0",
-"author": "SiposLevente",
-"description":"A sample plugin that adds dhcp capabilities to the node"
-}
