@@ -1,0 +1,104 @@
+* {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.data_line {
+    font-size: 1.2vw;
+}
+
+.container {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.top_img {
+    position: fix;
+    width: 3vw;
+
+}
+
+
+.leftpane {
+    z-index: 2;
+    position: fixed;
+    left: 0px;
+    top: 3vw;
+    width: 15%;
+    height: 100%;
+    float: left;
+    border-right: solid;
+    border-width: 1px;
+    border-color: rgb(228, 228, 228);
+    background-color: rgb(255, 255, 255);
+    border-collapse: collapse;
+}
+
+.middlepane {
+    z-index: 1;
+    width: 83%;
+    position: absolute;
+    left: 15%;
+    top: 3vw;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    border-collapse: collapse;
+    padding: 1vw;
+    font-size: 1.5vw;
+}
+
+.toppane {
+    z-index: 3;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 3vw;
+    border-collapse: collapse;
+    background-color: #418ce7;
+}
+
+.top_txt {
+    position: fixed;
+    display: inline;
+    color: white;
+    margin-left: -3vw;
+    top: -1.8vw;
+    margin-left: 3vw;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.side_btn:hover {
+    background-color: #80a6d3;
+    color: white;
+}
+
+.side_btn,
+.selected_menu {
+    font-size: 1vw;
+    padding-left: 10%;
+    padding-top: 0.6vw;
+    text-decoration: none;
+    width: 90%;
+    height: 2vw;
+    border-radius: 0%;
+    display: block;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    color: rgb(0, 0, 0);
+}
+
+
+.selected_menu {
+    color: white;
+    background-color: #519fff;
+}
+
+@media screen and (max-width: 800px) {}
