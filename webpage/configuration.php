@@ -33,7 +33,7 @@
                 </select>
                 <input id="submit_button" type="submit" value="Add!">
             </form>
-            <h3>List of interfaces in mesh: </h3> 
+            <h3>List of interfaces in mesh: </h3>
 
             <hr>
             <h2>Gateway settings</h2>
@@ -84,6 +84,7 @@
 
                 <input id="submit_button" type="submit" value="Delete!">
             </form>
+<h3>Bridges</h3>
 
         </div>
     </div>
