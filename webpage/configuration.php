@@ -8,6 +8,7 @@
     <title>Node Configuration</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="./scripts/configuration_scripts.js"></script>
 </head>
 
@@ -28,7 +29,7 @@
             <h2>Mesh settings</h2>
             <form action="./scripts/add_if_to_mesh.php" method="post">
                 <label for="if_to_mesh">Select interface to add to mesh: </label>
-                <select id="selector" name="if_to_mesh" id="if_to_mesh">
+                <select name="if_to_mesh" id="if_to_mesh">
                 </select>
                 <input id="submit_button" type="submit" value="Add!">
             </form>
@@ -37,8 +38,8 @@
             <hr>
             <h2>Gateway settings</h2>
             <form action="./scripts/set_gw_mode.php" method="post">
-                <label for="gw_if">Select interface to set gateway mode: </label>
-                <select id="selector" name="gw_if" id="gw_if">
+                <label for="gw_if">Select mesh interface to set gateway mode: </label>
+                <select id="gw_if" name="gw_if" >
                 </select>
                 </br>
                 <input type="radio" id="server" checked="checked" name="gw_mode" value="server">
@@ -57,13 +58,13 @@
 
             <hr>
             <h2>Bridge settings</h2>
-            <h3>Add bridge</h3>
+            <h3>Add a bridge</h3>
             <form action="./scripts/set_bridge.php" method="post">
                 Bridge
-                <select id="selector" name="if1" id="if1">
+                <select name="if1" id="if1">
                 </select>
                 with
-                <select id="selector" name="if2" id="if2">
+                <select name="if2" id="if2">
                 </select>
                 <br>
 
@@ -73,20 +74,16 @@
 
                 <input id="submit_button" type="submit" value="Set!">
             </form>
-            <h3>Delete bridge</h3>
+            <h3>Delete a bridge</h3>
             <form action="./scripts/set_bridge.php" method="post">
 
                 <label for="bridge_selector">Select bridge to delete: </label>
-                <select id="selector" name="bridge_selector" id="bridge">
+                <select name="bridge_selector" id="bridge_to_delete">
                 </select>
 
 
                 <input id="submit_button" type="submit" value="Delete!">
             </form>
-
-            <h3>List of bridges:</h3>
-
-
 
         </div>
     </div>
