@@ -85,7 +85,7 @@
                 <input id="submit_button" type="submit" value="Delete!">
             </form>
 <h3>Bridges</h3>
-
+<div class="list_of_bridges"></div>
         </div>
     </div>
 </body>
