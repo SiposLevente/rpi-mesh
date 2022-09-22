@@ -24,9 +24,9 @@ function isProcessRunning($proc)
     }
     else
     {
-        $result =  "<span>OFFLINE</span>";
+        $result =  "OFFLINE";
     }
-    return $result;
+    echo $result;
 }
 ?>
 
@@ -47,7 +47,7 @@ function isProcessRunning($proc)
         </div>
         <div class="middlepane">
             <h2>Access point configuration</h2>
-            <div>Access point is <span id="ap-status"></span><button onclick="toggle_ap()" type="button">Toggle!</button>
+            <div>Access point is <span id="ap-status"><?php isProcessRunning("hostapd")  ?> </span><button onclick="toggle_ap()" type="button">Toggle!</button>
                 <form action="./scripts/apply_ap.php" method="post">
                     <label for="interfaces">Select interface to configure access point on: </label>
                     <select id="ap_selector" name="interfaces" id="ap_interfaces">
