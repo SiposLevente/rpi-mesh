@@ -11,7 +11,7 @@ function updateTime() {
         });
 }
 
-function updateStartupTime() {
+unction updateStartupTime() {
     $.ajax({
             method: "POST",
             url: "./scripts/uptime.php",
