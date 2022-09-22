@@ -39,11 +39,11 @@ function isProcessRunning($proc)
             <p class="top_txt">System settings</p>
         </div>
         <div class="leftpane">
-            <a href="index.php" class="side_btn"><span class="side_btn_span">System Status</span></a>
-            <a href="interface.php" class="side_btn"><span class="side_btn_span">Interface configuration</span></a>
-            <a href="configuration.php" class="side_btn"><span class="side_btn_span">Node Configuration</span></a>
+            <a href="index.html" class="side_btn"><span class="side_btn_span">System Status</span></a>
+            <a href="interface.html" class="side_btn"><span class="side_btn_span">Interface configuration</span></a>
+            <a href="configuration.html" class="side_btn"><span class="side_btn_span">Node Configuration</span></a>
             <a href="settings.php" class="selected_menu"><span class="side_btn_span">System settings</span></a>
-            <a href="plugins.php" class="side_btn"><span class="side_btn_span">Plugins</span></a>
+            <a href="plugins.html" class="side_btn"><span class="side_btn_span">Plugins</span></a>
         </div>
         <div class="middlepane">
             <h2>Access point configuration</h2>
