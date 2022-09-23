@@ -2,6 +2,8 @@
     font-family: 'Trebuchet MS', sans-serif;
 }
 
+
+
 body,
 html {
     width: 100%;
@@ -24,7 +26,6 @@ html {
     width: 3vw;
 
 }
-
 
 .leftpane {
     z-index: 2;
@@ -95,10 +96,15 @@ html {
     color: rgb(0, 0, 0);
 }
 
-
 .selected_menu {
     color: white;
     background-color: #519fff;
+}
+
+#plugin_list_container {
+    width: 55vw;
+    height: 91vw;
+
 }
 
 @media screen and (max-width: 800px) {}
