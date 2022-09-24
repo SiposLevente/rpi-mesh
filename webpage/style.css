@@ -101,10 +101,35 @@ html {
     background-color: #519fff;
 }
 
-#plugin_list_container {
+
+
+.plugin_menu div {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.plugin_menu div:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.plugin_container {
+    
+}
+
+.plugin_menu {
     width: 55vw;
     height: 91vw;
-
+    overflow-y: auto;
+    float: left;
 }
+
+.side_description{
+    float: left;
+}
+
 
 @media screen and (max-width: 800px) {}
