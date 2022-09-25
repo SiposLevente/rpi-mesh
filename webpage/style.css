@@ -101,34 +101,42 @@ html {
     background-color: #519fff;
 }
 
-
-
-.plugin_menu div {
-  background-color: #eee;
-  color: black;
-  display: block;
-  padding: 12px;
-  text-decoration: none;
-}
-
-.plugin_menu div:hover {
-  background-color: #ccc;
-  cursor: pointer;
-}
-
-.plugin_container {
-    
-}
-
 .plugin_menu {
-    background-color: rgb(218,218,218);
+    background-color: rgb(218, 218, 218);
     width: 55vw;
-    height: 91vw;
+    height: 43vw;
     overflow-y: auto;
     float: left;
 }
 
-.side_description{
+.plugin_menu div {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+
+.plugin_menu div.color_one {
+    background-color: #f2f2f2;
+}
+
+.plugin_menu div.color_two {
+    background-color: #e6e6e6;
+}
+
+.plugin_menu div:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.plugin_container {
+    font-size: 1vw;
+}
+
+.side_description {
     float: left;
 }
 
