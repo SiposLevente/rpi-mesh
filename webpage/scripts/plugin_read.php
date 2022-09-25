@@ -16,7 +16,7 @@ foreach($plugins as $plugin){
             $toggler = !$toggler;
         }
 
-        $respounse .= "<div class=\"$style\" onclick=\"displayDescription('$plugin')\">$info->pluginName <span style=\"float:right\">ver.: $info->version</span> <br>$info->short_description<span style=\"float:right\"> Created by: $info->author<span></div>";
+        $respounse .= "<div class=\"$style\" onclick=\"displayDescription('$plugin')\">$info->pluginName <span class=\"right\">ver.: $info->version</span><br>$info->short_description<span class=\"right\"> Created by: $info->author<span></div>";
 
 
 

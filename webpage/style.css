@@ -115,9 +115,8 @@ html {
     display: block;
     padding: 12px;
     text-decoration: none;
+    cursor: pointer;
 }
-
-
 
 .plugin_menu div.color_one {
     background-color: #f2f2f2;
@@ -129,7 +128,10 @@ html {
 
 .plugin_menu div:hover {
     background-color: #ccc;
-    cursor: pointer;
+}
+
+.plugin_menu div:active {
+    background-color: #ccc;
 }
 
 .plugin_container {
@@ -137,8 +139,26 @@ html {
 }
 
 .side_description {
+    margin-left: 2vw;
+    width: 25vw;
+    height: 43vw;
+    float: left;
+    overflow-y: auto;
+}
+
+.right {
+    float: right;
+}
+
+.left {
     float: left;
 }
 
+.plugin_settings {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(750%);
+}
 
 @media screen and (max-width: 800px) {}
