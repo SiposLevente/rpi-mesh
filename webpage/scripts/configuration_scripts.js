@@ -15,17 +15,38 @@ $.ajax({
 
         set_selector("if_to_mesh", if_to_mesh_rule);
         set_selector("gw_if", gw_rule);
-        set_selector("if1", function() {return true;});
-        set_selector("if2", function() {return true;});
+        set_selector("if1", function() {
+            return true;
+        });
+        set_selector("if2", function() {
+            return true;
+        });
     });
+
+$.ajax({
+        method: "POST",
+        url: "./scripts/list_mesh_if.php",
+    })
+    .done(function(response) {
+        var data_entries = response.split('\n');
+        var selector = document.getElementById("if_from_mesh");
+        var list = document.getElementById("interface_list");
+        for (var i = 0; i < data_entries.length - 1; i++) {
+            selector.options[selector.options.length] = new Option(data_entries[i], data_entries[i]);
+            list.innerHTML += "<li>" + data_entries[i] + "</li>";
+
+        }
+    });
+
 
 
 
 updateBridgeList();
 
-
-
 setInterval(updateBridgeList, 5000);
+
+
+
 
 function updateBridgeList() {
     $.ajax({

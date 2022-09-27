@@ -33,13 +33,21 @@
                 </select>
                 <input id="submit_button" type="submit" value="Add!">
             </form>
+            <form action="./scripts/remove_if_from_mesh.php" method="post">
+                <label for="if_from_mesh">Select interface to remove from the mesh: </label>
+                <select name="if_from_mesh" id="if_from_mesh">
+                </select>
+                <input id="submit_button" type="submit" value="Remove!">
+            </form>
             <h3>List of interfaces in mesh: </h3>
+            <ul id="interface_list">
+            </ul>
 
             <hr>
             <h2>Gateway settings</h2>
             <form action="./scripts/set_gw_mode.php" method="post">
                 <label for="gw_if">Select mesh interface to set gateway mode: </label>
-                <select id="gw_if" name="gw_if" >
+                <select id="gw_if" name="gw_if">
                 </select>
                 </br>
                 <input type="radio" id="server" checked="checked" name="gw_mode" value="server">
@@ -84,8 +92,8 @@
 
                 <input id="submit_button" type="submit" value="Delete!">
             </form>
-<h3>Bridges</h3>
-<div class="list_of_bridges"></div>
+            <h3>Bridges</h3>
+            <div class="list_of_bridges"></div>
         </div>
     </div>
 </body>
