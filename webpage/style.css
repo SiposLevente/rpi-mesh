@@ -146,8 +146,7 @@ html {
     overflow-y: auto;
 }
 
-.settings_button {
-}
+.settings_button {}
 
 .right {
     float: right;
@@ -157,11 +156,9 @@ html {
     float: left;
 }
 
+
 .plugin_settings {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(850%);
+text-align: center;
 }
 
 @media screen and (max-width: 800px) {}
