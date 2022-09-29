@@ -94,6 +94,33 @@
             </form>
             <h3>Bridges</h3>
             <div class="list_of_bridges"></div>
+            <hr>
+            <h3>Forward interfaces</h3>
+            <form action="./scripts/add_forwarding.php" method="post">
+                Forward
+                <select name="if1" id="if1">
+                </select>
+                with
+                <select name="if2" id="if2">
+                </select>
+                <br>
+
+                <input id="submit_button" type="submit" value="Set!">
+            </form>
+            <h3>Delete a forwarding</h3>
+            <form action="./scripts/delete_forwarding.php" method="post">
+
+                Delete forwarding
+                <select name="if1" id="if1">
+                </select>
+                with
+                <select name="if2" id="if2">
+                </select>
+                <br>
+
+                <input id="submit_button" type="submit" value="Delete!">
+            </form>
+
         </div>
     </div>
 </body>
