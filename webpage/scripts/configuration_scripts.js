@@ -14,7 +14,24 @@ $.ajax({
         }
 
         set_selector("if_to_mesh", if_to_mesh_rule);
+        set_selector("if_to_mesh", if_to_mesh_rule);
+        set_selector("if_to_mesh", if_to_mesh_rule);
         set_selector("gw_if", gw_rule);
+        
+        set_selector("fa_if1", function() {
+            return true;
+        });
+        set_selector("fa_if2", function() {
+            return true;
+        });
+
+        set_selector("fd_if1", function() {
+            return true;
+        });
+        set_selector("fd_if2", function() {
+            return true;
+        });
+
         set_selector("if1", function() {
             return true;
         });
