@@ -32,4 +32,8 @@ echo "Copying scripts /etc/node-scripts/"
 mkdir -p /etc/node-scripts/
 cp -r ./scripts/* /etc/node-scripts/
 
-echo "www-data ALL = NOPASSWD: /etc/node-scripts/*" >> /etc/sudoers
+SCRIPTS=".scripts/*"
+for file in $SCRIPTS
+do
+  echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
+done
