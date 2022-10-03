@@ -7,7 +7,7 @@ $.ajax({
         url: "./scripts/interfaceIp.php",
     })
     .done(function(response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n');
+        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
         var selector = document.getElementById("selector");
         for (var i = 0; i < data_entries.length - 1; i++) {
 
