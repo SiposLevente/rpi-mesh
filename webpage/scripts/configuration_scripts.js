@@ -14,8 +14,6 @@ $.ajax({
         }
 
         set_selector("if_to_mesh", if_to_mesh_rule);
-        set_selector("if_to_mesh", if_to_mesh_rule);
-        set_selector("if_to_mesh", if_to_mesh_rule);
         set_selector("gw_if", gw_rule);
         
         set_selector("fa_if1", function() {
