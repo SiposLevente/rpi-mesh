@@ -38,7 +38,7 @@ echo "Copying web content to /var/www/html"
 mkdir -p /var/www/html/
 cp -r ./webpage/* /var/www/html/
 
-SCRIPTS=".scripts/*"
+SCRIPTS="scripts/*"
 for file in $SCRIPTS
 do
   echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
