@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ `whoami` != "root" ]];then
-    echo "Run this script root privilages!"
+    echo "Run this script with root privilages!"
     exit 1
 fi
 
