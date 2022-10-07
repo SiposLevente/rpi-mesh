@@ -49,7 +49,7 @@ SCRIPTS="scripts/*"
 for file in $SCRIPTS
 do
   is_in_file=`grep "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" /etc/sudoers`
-  if [[ $is_in_file != "net.ipv4.ip_forward=1" ]];then
+  if [[ $is_in_file != "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" ]];then
     echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
   fi
 done
