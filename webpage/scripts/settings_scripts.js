@@ -3,12 +3,12 @@ var interfaces = [];
 
 
 $.ajax({
-        method: "POST",
-        url: "./scripts/interfaceIp.php",
-    })
-    .done(function(response) {
+    method: "POST",
+    url: "./scripts/interfaceIp.php",
+})
+    .done(function (response) {
         var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
-//        var dhcp_selector = document.getElementById("dhcp_selector");
+        //        var dhcp_selector = document.getElementById("dhcp_selector");
         var ap_selector = document.getElementById("ap_selector");
 
         for (var i = 0; i < data_entries.length; i++) {
@@ -35,14 +35,19 @@ $.ajax({
 
 
         //        set_input();
-        ap_selector.onchange = function() {
+        ap_selector.onchange = function () {
             //set_input();
         }
-/*        dhcp_selector.onchange = function() {
-            //set_input();
-        }
-        */
+        /*        dhcp_selector.onchange = function() {
+                    //set_input();
+                }
+                */
     });
 
-
-
+function toggle_ap() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/toggle_ap.php",
+    })
+        .done(function (response) { });
+}
