@@ -8,7 +8,7 @@
     <title>System settings</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="./scripts/jquery/jquery.jsm"></script>
     <script src="./scripts/settings_scripts.js"></script>
 </head>
 
