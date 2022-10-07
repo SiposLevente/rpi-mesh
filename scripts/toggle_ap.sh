@@ -1,7 +1,9 @@
 #!/bin/bash
 status=`systemctl is-active hostapd`
 if [[ "$status" == "active" ]];then
-    sudo ip link set $1 down
+    sudo systemctl stop hostapd
+    sudo systemctl disable hostapd
 else
-    sudo ip link set $1 up 
+    sudo systemctl start hostapd
+    sudo systemctl enable hostapd
 fi
