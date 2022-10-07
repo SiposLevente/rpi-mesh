@@ -13,6 +13,7 @@ echo "Installing essential packages..."
 apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make
 sudo systemctl unmask hostapd.service
 sudo systemctl stop hostapd.service
+rfkill unblock 0
 
 
 is_in_file=`grep "batman-adv" /etc/modules`

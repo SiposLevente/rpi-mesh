@@ -49,5 +49,6 @@ function toggle_ap() {
         method: "POST",
         url: "./scripts/toggle_ap.php",
     })
-        .done(function (response) { });
+        .done(function (response) {
+         });
 }
