@@ -13,22 +13,6 @@
 </head>
 
 <body>
-    <?php
-function isProcessRunning($proc)
-{
-    $active = exec("systemctl is-active $proc");
-    $result = "";
-    if($active == "active")
-    {
-        $result = "ONLINE";
-    }
-    else
-    {
-        $result =  "OFFLINE";
-    }
-    echo $result;
-}
-?>
     <div class="container">
         <div class="toppane">
             <img src="icon.png" class="top_img" alt="">
@@ -38,14 +22,13 @@ function isProcessRunning($proc)
             <a href="index.html" class="side_btn"><span class="side_btn_span">System Status</span></a>
             <a href="interface.html" class="side_btn"><span class="side_btn_span">Interface configuration</span></a>
             <a href="configuration.html" class="side_btn"><span class="side_btn_span">Node Configuration</span></a>
-            <a href="settings.php" class="selected_menu"><span class="side_btn_span">System settings</span></a>
+            <a href="settings.html" class="selected_menu"><span class="side_btn_span">System settings</span></a>
             <a href="plugins.html" class="side_btn"><span class="side_btn_span">Plugins</span></a>
         </div>
         <div class="middlepane">
             <h2>Access point configuration</h2>
-            <div>Access point is <span id="ap-status">
-                    <?php isProcessRunning("hostapd")  ?>
-                </span><button onclick="toggle_ap()" type="button">Toggle!</button>
+            <div>Access point is <span id="ap-status"></span>
+                <button onclick="toggle_ap()" type="button">Toggle!</button>
                 <form action="./scripts/apply_ap.php" method="post">
                     <label for="interfaces">Select interface to configure access point on: </label>
                     <select id="ap_selector" name="interfaces" id="ap_interfaces">
