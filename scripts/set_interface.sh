@@ -5,7 +5,8 @@ sed -i.bak "/$2/,/^$/{/^$/!d}" $interface_file
 case $1 in
 
     "static")
-        echo -en "\nauto $2\n  iface $2 inet static\n  address $3/$4\n  gateway $5\n  dns-nameservers $6 $7\n" >> $interface_file
+        echo -en "\nauto $2\niface $2 inet static\naddress $3/$4\ngateway $5\ndns-nameservers $6 $7" >> $interface_file
+        systemctl 
         ;;
     "dhcp")
         echo -en $"\nauto $2\n  iface $2 inet dhcp\n" >> $interface_file
