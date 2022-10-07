@@ -44,11 +44,24 @@ $.ajax({
                 */
     });
 
+ap_status();
+
+function ap_status() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/access_point_status.php",
+    })
+        .done(function (response) {
+            document.getElementById("ap-status").innerHTML = response;
+        });
+}
+
 function toggle_ap() {
     $.ajax({
         method: "POST",
         url: "./scripts/toggle_ap.php",
     })
         .done(function (response) {
-         });
+            ap_status();
+        });
 }
