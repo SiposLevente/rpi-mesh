@@ -10,25 +10,32 @@ latest_batman="batman-adv-2022.2"
 echo "Updating repos..."
 apt update
 echo "Installing essential packages..."
-apt install -y git apache2 php wget batctl bridge-utils build-essential net-tools netfilter-persistent gcc make
+apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make
 
-echo "Getting B.A.T.M.A.N-advanced package..."
-wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
-echo "Extracting B.A.T.M.A.N-advanced..."
-tar -xvf $latest_batman.tar.gz
-cd $latest_batman
-echo "Building and installing B.A.T.M.A.N-advanced..."
-make
-make install
-depmod -a
-echo "Adding B.A.T.M.A.N-advanced kernel module..."
-modprobe batman-adv
-echo 'batman-adv' >> /etc/modules
-cd ..
-rm -rd batman-adv-*
 
-echo "Enabling forwarding..."
-echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+is_in_file=`grep "batman_adv" /etc/modules`
+if [[ $is_in_file != "batman_adv" ]];then
+  echo "Getting B.A.T.M.A.N-advanced package..."
+  wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
+  echo "Extracting B.A.T.M.A.N-advanced..."
+  tar -xvf $latest_batman.tar.gz
+  cd $latest_batman
+  echo "Building and installing B.A.T.M.A.N-advanced..."
+  make
+  make install
+  depmod -a
+  echo "Adding B.A.T.M.A.N-advanced kernel module..."
+  modprobe batman-adv
+  echo "batman-adv" >> /etc/modules
+  cd ..
+  rm -rd batman-adv-*
+fi
+
+is_in_file=`grep "net.ipv4.ip_forward=1" /etc/sysctl.conf`
+if [[ $is_in_file != "net.ipv4.ip_forward=1" ]];then
+  echo "Enabling forwarding..."
+  echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+fi
 
 echo "Copying scripts /etc/node-scripts/"
 mkdir -p /etc/node-scripts/
@@ -41,6 +48,8 @@ cp -r ./webpage/* /var/www/html/
 SCRIPTS="scripts/*"
 for file in $SCRIPTS
 do
-  echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
+  is_in_file=`grep "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" /etc/sudoers`
+  if [[ $is_in_file != "net.ipv4.ip_forward=1" ]];then
+    echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
+  fi
 done
-
