@@ -13,8 +13,8 @@ echo "Installing essential packages..."
 apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make
 
 
-is_in_file=`grep "batman_adv" /etc/modules`
-if [[ $is_in_file != "batman_adv" ]];then
+is_in_file=`grep "batman-adv" /etc/modules`
+if [[ $is_in_file != "batman-adv" ]];then
   echo "Getting B.A.T.M.A.N-advanced package..."
   wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
   echo "Extracting B.A.T.M.A.N-advanced..."
