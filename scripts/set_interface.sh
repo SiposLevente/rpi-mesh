@@ -3,7 +3,7 @@ dhcp_file="/etc/dhcpcd.conf"
 interfaces_file="/etc/network/interfaces"
 
 sed -i.bak "/$2/,/^$/{/^$/!d}" $dhcp_file
-sed -i.bak "/$2/,/^$/{/^$/!d}" $interface_file
+sed -i.bak "/$2/,/^$/{/^$/!d}" $interfaces_file
 ip address flush dev $2
 case $1 in
     "static")
@@ -12,8 +12,8 @@ case $1 in
         systemctl 
         ;;
     "dhcp")
-        echo -en $"\nauto $2\n  iface $2 inet dhcp\n" >> $interface_file
-        sed -i '/^$/N;/^\n$/D' $interface_file
+        echo -en $"\nauto $2\n  iface $2 inet dhcp\n" >> $interfaces_file
+        sed -i '/^$/N;/^\n$/D' $interfaces_file
         ;;
     "avahi")
         avahi-autoipd $2
