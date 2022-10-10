@@ -20,4 +20,5 @@ case $1 in
         ;;
 esac
 systemctl restart networking
-sudo ip link set $2 down && sleep 5 && sudo ip link set $2 up
+ip link set $2 down
+ip link set $2 up
