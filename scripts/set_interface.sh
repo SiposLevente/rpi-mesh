@@ -1,19 +1,23 @@
 #!/bin/bash
-interface_file="/etc/network/interfaces"
+dhcp_file="/etc/dhcpcd.conf"
+interfaces_file="/etc/network/interfaces"
 
+sed -i.bak "/$2/,/^$/{/^$/!d}" $dhcp_file
 sed -i.bak "/$2/,/^$/{/^$/!d}" $interface_file
 ip address flush dev $2
 case $1 in
     "static")
-        echo -en "\nauto $2\niface $2 inet static\naddress $3/$4\ngateway $5\ndns-nameservers $6 $7" >> $interface_file
+        echo -en "interface $2\nstatic ip_address=$3/$4\nstatic routers=$5\nstatic domain_name_servers=$6 $7" >> $dhcp_file
+        sed -i '/^$/N;/^\n$/D' $dhcp_file 
         systemctl 
         ;;
     "dhcp")
         echo -en $"\nauto $2\n  iface $2 inet dhcp\n" >> $interface_file
+        sed -i '/^$/N;/^\n$/D' $interface_file
         ;;
     "avahi")
         avahi-autoipd $2
         ;;
 esac
-sed -i '/^$/N;/^\n$/D' $interface_file 
 systemctl restart networking
+sudo ifconfig $2 down && sleep 1 && sudo ifconfig $2 up

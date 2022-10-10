@@ -9,10 +9,10 @@ $dns_1 = $_POST["dns_1"];
 $dns_2 = $_POST["dns_2"];
 
 if ($mode == "static"){
-    echo $interface . " " .$mode . "\n".$ip."/".$mask."\ngatway: " . $gateway ."\ndns: " . $dns_1 . ", ". $dns_2;
+    // echo $interface . " " .$mode . "\n".$ip."/".$mask."\ngatway: " . $gateway ."\ndns: " . $dns_1 . ", ". $dns_2;
     shell_exec("sudo /etc/node-scripts/set_interface.sh $mode $interface $ip $mask $gateway $dns_1 $dns_2");
 }else{
-    echo $interface . " " .$mode;
+    // echo $interface . " " .$mode;
     shell_exec("sudo /etc/node-scripts/set_interface.sh $mode $interface"); 
 }
 header('Location: ../interface.html');
