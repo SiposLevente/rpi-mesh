@@ -7,7 +7,7 @@ sed -i.bak "/$2/,/^$/{/^$/!d}" $interfaces_file
 ip address flush dev $2
 case $1 in
     "static")
-        echo -en "interface $2\nstatic ip_address=$3/$4\nstatic routers=$5\nstatic domain_name_servers=$6 $7\n\n" >> $dhcp_file
+        echo -en "\ninterface $2\nstatic ip_address=$3/$4\nstatic routers=$5\nstatic domain_name_servers=$6 $7\n" >> $dhcp_file
         sed -i '/^$/N;/^\n$/D' $dhcp_file 
         systemctl 
         ;;
@@ -22,3 +22,4 @@ esac
 systemctl restart networking
 ip link set $2 down
 ip link set $2 up
+sleep 10
