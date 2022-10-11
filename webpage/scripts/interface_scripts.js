@@ -3,10 +3,10 @@ var interfaces = [];
 
 
 $.ajax({
-        method: "POST",
-        url: "./scripts/interfaceIp.php",
-    })
-    .done(function(response) {
+    method: "POST",
+    url: "./scripts/interfaceIp.php",
+})
+    .done(function (response) {
         var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
         var selector = document.getElementById("selector");
         for (var i = 0; i < data_entries.length; i++) {
@@ -29,12 +29,43 @@ $.ajax({
             selector.options[selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
         }
 
-
         set_input();
-        selector.onchange = function() {
+        selector.onchange = function () {
+            updated_interfaces();
             set_input();
         }
     });
+
+setInterval(updated_interfaces, 1000);
+
+function updated_interfaces() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/interfaceIp.php",
+    })
+        .done(function (response) {
+            var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
+            var selector = document.getElementById("selector");
+            for (var i = 0; i < data_entries.length; i++) {
+
+                var split_data = data_entries[i].split('/');
+                var interface_plus_ip = split_data[0].split(':');
+                if (interface_plus_ip[1].trim() == "Offline") {
+                    interfaces[i] = {
+                        interface: interface_plus_ip[0],
+                        ip: IP_PLACEHOLDER,
+                        mask: "24"
+                    };
+                } else {
+                    interfaces[i] = {
+                        interface: interface_plus_ip[0],
+                        ip: interface_plus_ip[1].trim(),
+                        mask: split_data[1].trim()
+                    };
+                }
+            }
+        });
+}
 
 
 function set_input() {
@@ -59,13 +90,13 @@ function set_input() {
 function toggle_interface() {
     var interface = interfaces[selector.selectedIndex].interface;
     $.ajax({
-            method: "POST",
-            url: "./scripts/toggle_interface.php",
-            data: {
-                "interface": interface
-            }
-        })
-        .done(function(response) {});
+        method: "POST",
+        url: "./scripts/toggle_interface.php",
+        data: {
+            "interface": interface
+        }
+    })
+        .done(function (response) { });
     set_input();
 }
 
