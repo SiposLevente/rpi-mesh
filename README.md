@@ -3,3 +3,6 @@ This project aims to create a modular device, that uses [B.A.T.M.A.N-advanced](h
 
 # Plugins
 Plugins can be installed by cloning or copying an adequate repository with a specific structure into the `webpage/plugins` folder.
+
+# Plugin Manager
+There is a plugin manager that can update, delete, install plugins: https://github.com/SiposLevente/rpi-mesh-plugin-manager
