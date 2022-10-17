@@ -30,7 +30,7 @@ $.ajax({
             }
         }
     });
-
+ap_status();
 setInterval(ap_status, 2500);
 
 $.ajax({
