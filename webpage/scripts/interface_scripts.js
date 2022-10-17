@@ -81,8 +81,8 @@ function set_input() {
         document.getElementById("ip").value = IP_PLACEHOLDER;
         document.getElementById("ip").placeholder = IP_PLACEHOLDER;
         document.getElementById("interface_status").innerHTML = "DOWN\t";
-        document.querySelectorAll('input.static_ip').forEach(element => element.disabled = true);
-        document.getElementById("submit_button").disabled = true;
+        //document.querySelectorAll('input.static_ip').forEach(element => element.disabled = true);
+        //document.getElementById("submit_button").disabled = true;
     }
 }
 
