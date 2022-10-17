@@ -31,7 +31,7 @@ $.ajax({
         }
     });
 
-ap_status();
+setInterval(ap_status, 2500);
 
 $.ajax({
     method: "POST",
@@ -75,7 +75,7 @@ function ap_status() {
         });
 }
 
-function toggle_ap() { 
+function toggle_ap() {
     $.ajax({
         method: "POST",
         url: "./scripts/toggle_ap.php",

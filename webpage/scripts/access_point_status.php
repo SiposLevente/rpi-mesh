@@ -1,6 +1,5 @@
 <?php
-$active = exec("systemctl is-active $proc");
-$result = "";
+$active = exec("systemctl is-active hostapd.service");
 if($active == "active")
 {
 $result = "ONLINE";
