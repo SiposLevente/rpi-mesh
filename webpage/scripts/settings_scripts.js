@@ -33,10 +33,6 @@ $.ajax({
 
 ap_status();
 
-
-
-
-
 $.ajax({
     method: "POST",
     url: "./scripts/get_wifi_name.php",
@@ -68,11 +64,6 @@ $.ajax({
     .done(function (response) {
         document.getElementById("password").value = response;
     });
-
-
-
-
-
 
 function ap_status() {
     $.ajax({
