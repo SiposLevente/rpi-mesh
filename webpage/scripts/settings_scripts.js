@@ -75,12 +75,12 @@ function ap_status() {
         });
 }
 
-function toggle_ap() {
+function toggle_ap() { 
     $.ajax({
         method: "POST",
         url: "./scripts/toggle_ap.php",
         data: {
-            interface: document.getElementById("ap_selector").text()
+            interface: document.getElementById("ap_selector").value
         }
     })
         .done(function (response) {
