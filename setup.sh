@@ -10,9 +10,11 @@ latest_batman="batman-adv-2022.2"
 echo "Updating repos..."
 apt update
 echo "Installing essential packages..."
-apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make
+apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make ssh
 sudo systemctl unmask hostapd.service
 sudo systemctl stop hostapd.service
+sudo systemctl enable ssh
+sudo systemctl start ssh
 rfkill unblock 0
 
 
