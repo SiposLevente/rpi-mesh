@@ -9,7 +9,6 @@ case $1 in
     "static")
         echo -en "\ninterface $2\nstatic ip_address=$3/$4\nstatic routers=$5\nstatic domain_name_servers=$6 $7\n" >> $dhcp_file
         sed -i '/^$/N;/^\n$/D' $dhcp_file 
-        systemctl 
         ;;
     "dhcp")
         echo -en $"\nauto $2\n  iface $2 inet dhcp\n\n" >> $interfaces_file
