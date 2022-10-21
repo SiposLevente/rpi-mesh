@@ -28,7 +28,7 @@ $.ajax({
                 };
             }
             selector.options[selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
-            remove_ip_selector.options[selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
+            remove_ip_selector.options[remove_ip_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
         }
 
         set_input();
