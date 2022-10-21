@@ -19,6 +19,7 @@ case $1 in
         ;;
 esac
 systemctl restart networking
+systemctl restart dhcpcd
 ip link set $2 down
 ip link set $2 up
 sleep 10
