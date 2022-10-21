@@ -4,7 +4,7 @@ function getIp($interface) {
     if( $intIp != ""){
         return $intIp;
     }elseif (shell_exec("ip addr show eth1 | grep \" UP \"") != "") {
-        return "No IP!";
+        return "No IP!/No Mask!";
     }
     else {
         return "Offline";
