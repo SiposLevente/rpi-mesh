@@ -3,6 +3,8 @@ function getIp($interface) {
     $intIp = shell_exec("ip addr show $interface | sed -En -e 's/.*inet ([0-9.]+...).*/\\1/p'");
     if( $intIp != ""){
         return $intIp;
+    }elseif (shell_exec("ip addr show eth1 | grep \" UP \"") != "") {
+        return "No IP!";
     }
     else {
         return "Offline";
