@@ -9,6 +9,7 @@ $.ajax({
     .done(function (response) {
         var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
         var selector = document.getElementById("selector");
+        var remove_ip_selector = document.getElementById("selector");
         for (var i = 0; i < data_entries.length; i++) {
 
             var split_data = data_entries[i].split('/');
@@ -27,6 +28,7 @@ $.ajax({
                 };
             }
             selector.options[selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
+            remove_ip_selector.options[selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
         }
 
         set_input();
