@@ -4,6 +4,10 @@ if [[ `whoami` != "root" ]];then
     echo "Run this script with root privilages!"
     exit 1
 fi
+if [[ $1 == "upgrade" ]];then
+  cd `dirname $0`
+  git pull
+fi
 
 latest_batman="batman-adv-2022.2"
 
