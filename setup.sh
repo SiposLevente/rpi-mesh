@@ -4,8 +4,10 @@ if [[ `whoami` != "root" ]];then
     echo "Run this script with root privilages!"
     exit 1
 fi
+
+cd `dirname $0`
 if [[ $1 == "upgrade" ]];then
-  cd `dirname $0`
+  echo "Updating RPi-Mesh..."
   git pull
 fi
 
