@@ -32,13 +32,16 @@ $.ajax({
             }
         }
     });
-ap_status();
-get_ssids()
-setInterval(ap_status, 2500);
 
-document.getElementById("ssid_interface_selector").onchange = function () {
-    get_ssids();
-}
+window.onload = function () {
+    ap_status();
+    get_ssids()
+    document.getElementById("ssid_interface_selector").onchange = function () {
+        get_ssids();
+    }
+};
+
+setInterval(ap_status, 2500);
 
 function get_ssids() {
     $.ajax({
