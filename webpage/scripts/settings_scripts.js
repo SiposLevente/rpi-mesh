@@ -48,13 +48,10 @@ function get_ssids() {
     $.ajax({
         method: "POST",
         url: "./scripts/get_ssids.php",
-        data: {
-            ssid_interface: document.getElementById("ssid_interface_selector").value
-        }
     })
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
-            if (!response.includes("(-100)")) {
+            if (response == "") {
                 var data_entries = response.replaceAll('SSID: ', '').split('\n').filter(function (element) { return element != "" });
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
@@ -65,10 +62,10 @@ function get_ssids() {
 
                 for (var i = 0; i < data_entries.length; i++) {
                     var data = data_entries[i].trim();
-                    ssid_selector.options[ssid_selector.options.length] = new Option(data, data);
+                    ssid_selector.options[i] = new Option(data, data);
                 }
             } else {
-                document.getElementById("ssid_warning").innerHTML = "Selected interface is turned off! Please turn on to see nearby WiFi SSIDs!";
+                document.getElementById("ssid_warning").innerHTML = "Wireless interfaces are unreachable! Please turn on a wireless interface to see nearby WiFi SSIDs!";
                 document.getElementById("ssid_interface_selector").disabled = true;
                 document.getElementById("ssid").disabled = true;
                 document.getElementById("password").disabled = true;

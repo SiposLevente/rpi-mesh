@@ -1,2 +1,2 @@
 #!/bin/bash
-iw dev $1 scan | grep SSID
+nmcli -f ssid,freq,bars,security dev wifi list | tail -n +2
