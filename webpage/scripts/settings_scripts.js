@@ -51,7 +51,7 @@ function get_ssids() {
     })
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
-            if (response == "") {
+            if (response != "") {
                 var data_entries = response.replaceAll('SSID: ', '').split('\n').filter(function (element) { return element != "" });
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
