@@ -47,7 +47,6 @@ function updated_interfaces() {
     })
         .done(function (response) {
             var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
-            var selector = document.getElementById("selector");
             for (var i = 0; i < data_entries.length; i++) {
 
                 var split_data = data_entries[i].split('/');
