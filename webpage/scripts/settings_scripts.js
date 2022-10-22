@@ -31,11 +31,12 @@ $.ajax({
                 ssid_interface_selector.options[ssid_interface_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
             }
         }
+        get_ssids()
     });
 
 window.onload = function () {
     ap_status();
-    get_ssids()
+
     document.getElementById("ssid_interface_selector").onchange = function () {
         get_ssids();
     }
@@ -48,7 +49,7 @@ function get_ssids() {
         method: "POST",
         url: "./scripts/get_ssids.php",
         data: {
-            interface: document.getElementById("ssid_interface_selector").text
+            ssid_interface: document.getElementById("ssid_interface_selector").value
         }
     })
         .done(function (response) {
