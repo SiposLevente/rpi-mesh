@@ -8,6 +8,7 @@ $.ajax({
     .done(function (response) {
         var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
         var ap_selector = document.getElementById("ap_selector");
+        var ssid_interface_selector = document.getElementById("ssid_interface_selector");
 
         for (var i = 0; i < data_entries.length; i++) {
             var split_data = data_entries[i].split('/');
@@ -27,11 +28,50 @@ $.ajax({
             }
             if (interfaces[i].interface[0] == 'w') {
                 ap_selector.options[ap_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
+                ssid_interface_selector.options[ssid_interface_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
             }
         }
     });
 ap_status();
+get_ssids()
 setInterval(ap_status, 2500);
+
+document.getElementById("ssid_interface_selector").onchange = function () {
+    get_ssids();
+}
+
+function get_ssids() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/get_ssids.php",
+        data: {
+            interface: document.getElementById("ssid_interface_selector").text
+        }
+    })
+        .done(function (response) {
+            var ssid_selector = document.getElementById("ssid");
+            if (!response.includes("(-100)")) {
+                var data_entries = response.replaceAll('SSID: ', '').split('\n').filter(function (element) { return element != "" });
+                document.getElementById("ssid_warning").innerHTML = "";
+                document.getElementById("ssid_interface_selector").disabled = false;
+                document.getElementById("ssid").disabled = false;
+                document.getElementById("password").disabled = false;
+                document.getElementById("submit_ssid_button").disabled = false;
+
+
+                for (var i = 0; i < data_entries.length; i++) {
+                    var data = data_entries[i].trim();
+                    ssid_selector.options[ssid_selector.options.length] = new Option(data, data);
+                }
+            } else {
+                document.getElementById("ssid_warning").innerHTML = "Selected interface is turned off! Please turn on to see nearby WiFi SSIDs!";
+                document.getElementById("ssid_interface_selector").disabled = true;
+                document.getElementById("ssid").disabled = true;
+                document.getElementById("password").disabled = true;
+                document.getElementById("submit_ssid_button").disabled = true;
+            }
+        });
+}
 
 $.ajax({
     method: "POST",

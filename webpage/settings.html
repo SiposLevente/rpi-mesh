@@ -27,40 +27,51 @@
         </div>
         <div class="middlepane">
             <h2>Access point configuration</h2>
-            <div>Access point is <span id="ap-status"></span>
-                <button onclick="toggle_ap()" type="button">Toggle!</button>
-                <form action="./scripts/apply_ap.php" method="post">
-                    <label for="interfaces">Select interface to configure access point on: </label>
-                    <select id="ap_selector" name="interfaces" id="ap_interfaces">
-                    </select>
-                    <br>
-                    <label for="ap_name">SSID: </label>
-                    <input id="ap_name" placeholder="Network_Name" maxlength="32" minlength="1" size="15" name="ap_name"
-                        type="text" required>
-                    <br>
-                    <label for="country_code">Country code: </label>
-                    <input id="country_code" placeholder="US" maxlength="2" minlength="1" size="2" name="country_code"
-                        type="text" required>
-                    <br>
-
-                    <label for="wifi_mode">Select interface to configure access point on:</label>
-                    <select id="wifi_mode" name="wifi_mode" id="wifi_mode">
-                        <option value="a">a</option>
-                        <option value="b">b</option>
-                        <option selected="selected" value="g">g</option>
-                    </select>
-                    <br>
-                    <label for="channel">Channel: </label>
-                    <input id="channel" placeholder="9" size="3" min="1" max="13" name="channel" type="number" required>
-                    <br>
-
-                    <label for="password">Password: </label>
-                    <input id="password" maxlength="63" minlength="8" size="15" name="password" type="text" required>
-                    <br>
-
-                    <input id="submit_button" type="submit" value="Save">
-                </form>
-            </div>
+            Access point is <span id="ap-status"></span>
+            <button onclick="toggle_ap()" type="button">Toggle!</button>
+            <form action="./scripts/apply_ap.php" method="post">
+                <label for="interfaces">Select interface to configure access point on: </label>
+                <select id="ap_selector" name="interfaces" id="ap_interfaces">
+                </select>
+                <br>
+                <label for="ap_name">SSID: </label>
+                <input id="ap_name" placeholder="Network_Name" maxlength="32" minlength="1" size="15" name="ap_name"
+                    type="text" required>
+                <br>
+                <label for="country_code">Country code: </label>
+                <input id="country_code" placeholder="US" maxlength="2" minlength="1" size="2" name="country_code"
+                    type="text" required>
+                <br>
+                <label for="wifi_mode">Select interface to configure access point on:</label>
+                <select id="wifi_mode" name="wifi_mode" id="wifi_mode">
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option selected="selected" value="g">g</option>
+                </select>
+                <br>
+                <label for="channel">Channel: </label>
+                <input id="channel" placeholder="9" size="3" min="1" max="13" name="channel" type="number" required>
+                <br>
+                <label for="password">Password: </label>
+                <input id="password" maxlength="63" minlength="8" size="15" name="password" type="text" required>
+                <br>
+                <input id="submit_button" type="submit" value="Save">
+            </form>
+            <hr>
+            <form action="./scripts/connect_to_wifi.php" method="post">
+                <div id="ssid_warning"></div>
+                <label for="ssid_interface_selector">Select interface to configure access point on: </label>
+                <select id="ssid_interface_selector" name="ssid_interface_selector" id="ssid_interface_selector">
+                </select>
+                <label for="ssid">Connect to network: </label>
+                <select id="ssid" name="ssid" id="ssid">
+                </select>
+                <br>
+                <label for="password">Password: </label>
+                <input id="password" maxlength="63" minlength="8" size="15" name="password" type="text" required>
+                <br>
+                <input id="submit_ssid_button" type="submit" value="Connect!">
+            </form>
         </div>
 </body>
 
