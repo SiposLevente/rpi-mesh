@@ -56,7 +56,7 @@ function get_ssids() {
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
                 document.getElementById("ssid").disabled = false;
-                document.getElementById("password").disabled = false;
+                document.getElementById("wifi_password").disabled = false;
                 document.getElementById("submit_ssid_button").disabled = false;
 
 
@@ -68,7 +68,7 @@ function get_ssids() {
                 document.getElementById("ssid_warning").innerHTML = "Wireless interfaces are unreachable! Please turn on a wireless interface to see nearby WiFi SSIDs!";
                 document.getElementById("ssid_interface_selector").disabled = true;
                 document.getElementById("ssid").disabled = true;
-                document.getElementById("password").disabled = true;
+                document.getElementById("wifi_password").disabled = true;
                 document.getElementById("submit_ssid_button").disabled = true;
             }
         });
