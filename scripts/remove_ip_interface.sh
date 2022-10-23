@@ -1,5 +1,6 @@
 #!/bin/bash
 dhcp_file="/etc/dhcpcd.conf"
+interfaces_file="/etc/network/interfaces"
 sed -i.bak "/$1/,/^$/{/^$/!d}" $dhcp_file
 sed -i.bak "/$1/,/^$/{/^$/!d}" $interfaces_file
 echo -en "\ndenyinterfaces $1\n" >> $dhcp_file
