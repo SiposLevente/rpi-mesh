@@ -51,6 +51,10 @@ function get_ssids() {
     })
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
+            if (!ssid_selector.disabled){
+                ssid_selector.disabled = false;
+            }
+            
             if (response != "") {
                 var data_entries = response.replaceAll("SSID: ", "").split("\n").filter(function (element) { return element != "" });
                 document.getElementById("ssid_warning").innerHTML = "";
