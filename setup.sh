@@ -17,14 +17,20 @@ echo "Updating repos..."
 apt update
 echo "Installing essential packages..."
 apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make ssh network-manager
-sudo systemctl unmask hostapd.service
-sudo systemctl stop hostapd.service
-sudo systemctl enable ssh
-sudo systemctl enable NetworkManager
-sudo systemctl start NetworkManager
-sudo systemctl start ssh
+systemctl unmask hostapd.service
+systemctl stop hostapd.service
+systemctl enable ssh
+systemctl enable NetworkManager
+systemctl start NetworkManager
+systemctl start ssh
 rfkill unblock 0
 
+echo "Copying persistency service for mesh node..."
+cp mesh-node-persistency.service /etc/systemd/system
+
+echo "Enabling persistency service for mesh node..."
+systemctl daemon-reload
+systemctl enable mesh-node-persistency.service
 
 is_in_file=`grep "batman-adv" /etc/modules`
 if [[ $is_in_file != "batman-adv" ]];then
