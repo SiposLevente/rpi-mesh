@@ -1,5 +1,6 @@
 var interfaces = [];
 var mesh_interfaces = [];
+var bridges;
 
 $.ajax({
     method: "POST",
@@ -16,6 +17,8 @@ $.ajax({
 
         set_selector("if_to_mesh", if_to_mesh_rule);
         set_selector("gw_if", gw_rule);
+
+        set_selector("bridge_to_delete", bridge_rule);
 
         set_selector("fa_if1", every_interface_rule);
         set_selector("fa_if2", every_interface_rule);
@@ -46,6 +49,14 @@ updateBridgeList();
 
 setInterval(updateBridgeList, 5000);
 
+function bridge_rule(interface_name) {
+    var return_value = false;
+    if (bridges.includes(interface_name)){
+        return_value = true;
+    }
+    return return_value;
+}
+
 function updateBridgeList() {
     $.ajax({
         method: "POST",
@@ -55,6 +66,7 @@ function updateBridgeList() {
         }
     })
         .done(function (response) {
+            bridges = response;
             $("div.list_of_bridges").html(response);
         });
 }
