@@ -25,6 +25,11 @@ systemctl start NetworkManager
 systemctl start ssh
 rfkill unblock 0
 
+echo "noarp" >> /etc/dhcpcd.conf
+echo "noipv4ll" >> /etc/dhcpcd.conf
+systemctl stop dhcpcd
+systemctl start dhcpcd
+
 echo "Copying persistency service for mesh node..."
 cp mesh-node-persistency.service /etc/systemd/system
 
