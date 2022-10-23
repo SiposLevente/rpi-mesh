@@ -106,6 +106,19 @@ $.ajax({
         document.getElementById("password").value = response;
     });
 
+$.ajax({
+    method: "POST",
+    url: "./scripts/get_current_connection.php",
+})
+    .done(function (response) {
+        var current_connecetions = document.getElementById("current_connection");
+        if (response != "") {
+            current_connecetions.innerHTML = response;
+        } else {
+            current_connecetions.innerHTML = "No active wireless conenction!";
+        }
+    });
+
 function ap_status() {
     $.ajax({
         method: "POST",
