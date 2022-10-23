@@ -1,0 +1,11 @@
+[Unit]
+Description=Persistency service for rpi mesh system. This will restore saved settings.
+After=network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/bin/bash /etc/node-scripts/start_node.sh
+
+[Install]
+WantedBy=multi-user.target
