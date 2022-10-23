@@ -1,10 +1,10 @@
 #!/bin/bash
 dhcp_file="/etc/dhcpcd.conf"
-sed -i.bak "/$1/,/^$/{/^$/!d}" $dhcp_file
-sed -i.bak "/$1/,/^$/{/^$/!d}" $interfaces_file
-echo -en "\ndenyinterfaces $1\n" >> $dhcp_file
+sed -i.bak ":/$1/,/^$/{/^$/!d}:d" $dhcp_file
+sed -i.bak ":/$1/,/^$/{/^$/!d}:d" $interfaces_file
+echo -en ":\ndenyinterfaces $1\n:d" >> $dhcp_file
 ip address flush dev $1
-sed -i "/^$/N;/^\n$/D" $dhcp_file 
+sed -i ":/^$/N;/^\n$/D:d" $dhcp_file 
 systemctl restart networking
 systemctl restart dhcpcd
 ip link set $1 down
