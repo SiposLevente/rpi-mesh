@@ -1,7 +1,7 @@
 #!/bin/bash
 
 status="`systemctl is-active hostapd.service`"
-if [[ $status == 'active' ]];
+if [[ $status == "active" ]];
 then
     ip link set $1 down
     iptables -D INPUT -p udp --dport 67 -j ACCEPT

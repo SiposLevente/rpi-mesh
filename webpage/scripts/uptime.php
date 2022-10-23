@@ -1,1 +1,1 @@
-<?php echo exec("uptime -p"); ?>
+<?php echo shell_exec("uptime -p"); ?>

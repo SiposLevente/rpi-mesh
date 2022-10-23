@@ -1,3 +1,3 @@
 <?php
-echo exec('date');
+echo shell_exec("date");
 ?>

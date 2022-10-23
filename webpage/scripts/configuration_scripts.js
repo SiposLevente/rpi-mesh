@@ -6,11 +6,11 @@ $.ajax({
     url: "./scripts/interfaceIp.php",
 })
     .done(function (response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
+        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
 
         for (var i = 0; i < data_entries.length; i++) {
-            var split_data = data_entries[i].split('/');
-            var interface_plus_ip = split_data[0].split(':');
+            var split_data = data_entries[i].split("/");
+            var interface_plus_ip = split_data[0].split(":");
             interfaces[i] = interface_plus_ip[0];
         }
 
@@ -32,7 +32,7 @@ $.ajax({
     url: "./scripts/list_mesh_if.php",
 })
     .done(function (response) {
-        var data_entries = response.split('\n');
+        var data_entries = response.split("\n");
         var selector = document.getElementById("if_from_mesh");
         var list = document.getElementById("interface_list");
         for (var i = 0; i < data_entries.length - 1; i++) {

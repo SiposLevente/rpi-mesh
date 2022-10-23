@@ -6,13 +6,13 @@ $.ajax({
     url: "./scripts/interfaceIp.php",
 })
     .done(function (response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
+        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
         var ap_selector = document.getElementById("ap_selector");
         var ssid_interface_selector = document.getElementById("ssid_interface_selector");
 
         for (var i = 0; i < data_entries.length; i++) {
-            var split_data = data_entries[i].split('/');
-            var interface_plus_ip = split_data[0].split(':');
+            var split_data = data_entries[i].split("/");
+            var interface_plus_ip = split_data[0].split(":");
             if (interface_plus_ip[1].trim() == "Offline") {
                 interfaces[i] = {
                     interface: interface_plus_ip[0],
@@ -26,7 +26,7 @@ $.ajax({
                     mask: split_data[1].trim()
                 };
             }
-            if (interfaces[i].interface[0] == 'w') {
+            if (interfaces[i].interface[0] == "w") {
                 ap_selector.options[ap_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
                 ssid_interface_selector.options[ssid_interface_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
             }
@@ -52,7 +52,7 @@ function get_ssids() {
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
             if (response != "") {
-                var data_entries = response.replaceAll('SSID: ', '').split('\n').filter(function (element) { return element != "" });
+                var data_entries = response.replaceAll("SSID: ", "").split("\n").filter(function (element) { return element != "" });
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
                 document.getElementById("ssid").disabled = false;

@@ -6,7 +6,7 @@ $style_toggler = true;
 $style_one = "color_one";
 $style_two = "color_two";
 foreach($plugins as $plugin){
-    if($plugin[0] != '.'){
+    if($plugin[0] != "."){
         $info = json_decode(file_get_contents($plugin_folder . $plugin."/info.json"));
         $style = $style_one;
         if($toggler){

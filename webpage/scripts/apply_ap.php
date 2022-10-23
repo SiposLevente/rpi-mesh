@@ -8,6 +8,6 @@ $password = $_POST["password"];
 
 shell_exec("sudo /etc/node-scripts/set_ap.sh $interface $ssid $c_code $mode $channel $password");
 
-header('Location: ../settings.html');
+header("Location: ../settings.html");
 ?>
 

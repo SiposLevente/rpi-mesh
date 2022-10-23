@@ -1,5 +1,5 @@
 <?php
-$temp = exec("cat /sys/class/thermal/thermal_zone0/temp | cut -c 1-3 | sed -e \"s/.\{2\}/&.    /g\"");                                                                                                          
+$temp = shell_exec("cat /sys/class/thermal/thermal_zone0/temp | cut -c 1-3 | sed -e \"s/.\{2\}/&.    /g\"");                                                                                                          
 $tempNum = floatval($temp);
 if($tempNum < 40)
 {

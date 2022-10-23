@@ -7,13 +7,13 @@ $.ajax({
     url: "./scripts/interfaceIp.php",
 })
     .done(function (response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
+        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
         var selector = document.getElementById("selector");
         var remove_ip_selector = document.getElementById("remove_ip_interface");
         for (var i = 0; i < data_entries.length; i++) {
 
-            var split_data = data_entries[i].split('/');
-            var interface_plus_ip = split_data[0].split(':');
+            var split_data = data_entries[i].split("/");
+            var interface_plus_ip = split_data[0].split(":");
             if (interface_plus_ip[1].trim() == "Offline") {
                 interfaces[i] = {
                     interface: interface_plus_ip[0],
@@ -46,11 +46,11 @@ function updated_interfaces() {
         url: "./scripts/interfaceIp.php",
     })
         .done(function (response) {
-            var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, '').split('\n').filter(function (element) { return element != "" });
+            var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
             for (var i = 0; i < data_entries.length; i++) {
 
-                var split_data = data_entries[i].split('/');
-                var interface_plus_ip = split_data[0].split(':');
+                var split_data = data_entries[i].split("/");
+                var interface_plus_ip = split_data[0].split(":");
                 if (interface_plus_ip[1].trim() == "Offline") {
                     interfaces[i] = {
                         interface: interface_plus_ip[0],
@@ -72,7 +72,7 @@ function updated_interfaces() {
 function set_input() {
     if (interfaces[selector.selectedIndex].ip != IP_PLACEHOLDER) {
         document.getElementById("interface_status").innerHTML = "UP\t";
-        document.querySelectorAll('input.static_ip').forEach(element => element.disabled = false);
+        document.querySelectorAll("input.static_ip").forEach(element => element.disabled = false);
         document.getElementById("ip").placeholder = interfaces[selector.selectedIndex].ip;
         document.getElementById("ip").value = interfaces[selector.selectedIndex].ip;
         document.getElementById("mask").placeholder = interfaces[selector.selectedIndex].mask;
@@ -82,7 +82,7 @@ function set_input() {
         document.getElementById("ip").value = IP_PLACEHOLDER;
         document.getElementById("ip").placeholder = IP_PLACEHOLDER;
         document.getElementById("interface_status").innerHTML = "DOWN\t";
-        //document.querySelectorAll('input.static_ip').forEach(element => element.disabled = true);
+        //document.querySelectorAll("input.static_ip").forEach(element => element.disabled = true);
         //document.getElementById("submit_button").disabled = true;
     }
 }
@@ -103,31 +103,31 @@ function toggle_interface() {
 
 
 function display_static() {
-    document.querySelectorAll('*.static_ip').forEach(element => element.style.visibility = "visible");
-    document.querySelectorAll('*.static_ip').forEach(element => element.disabled = false);
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.disabled = true);
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.disabled = true);
+    document.querySelectorAll("*.static_ip").forEach(element => element.style.visibility = "visible");
+    document.querySelectorAll("*.static_ip").forEach(element => element.disabled = false);
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.disabled = true);
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.disabled = true);
     set_input();
 }
 
 function display_dhcp() {
-    document.querySelectorAll('*.static_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.static_ip').forEach(element => element.disabled = true);
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.style.visibility = "visible");
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.disabled = false);
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.disabled = true);
+    document.querySelectorAll("*.static_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.static_ip").forEach(element => element.disabled = true);
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.style.visibility = "visible");
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.disabled = false);
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.disabled = true);
 }
 
 function display_avahi() {
-    document.querySelectorAll('*.static_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.static_ip').forEach(element => element.disabled = true);
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.style.visibility = "hidden");
-    document.querySelectorAll('*.dhcp_ip').forEach(element => element.disabled = true);
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.style.visibility = "visible");
-    document.querySelectorAll('*.avahi_ip').forEach(element => element.disabled = false);
+    document.querySelectorAll("*.static_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.static_ip").forEach(element => element.disabled = true);
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.style.visibility = "hidden");
+    document.querySelectorAll("*.dhcp_ip").forEach(element => element.disabled = true);
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.style.visibility = "visible");
+    document.querySelectorAll("*.avahi_ip").forEach(element => element.disabled = false);
 }
 
 function radio_change_event(radio) {

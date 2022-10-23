@@ -15,5 +15,5 @@ if ($mode == "static"){
     // echo $interface . " " .$mode;
     shell_exec("sudo /etc/node-scripts/set_interface.sh $mode $interface"); 
 }
-header('Location: ../interface.html');
+header("Location: ../interface.html");
 ?>

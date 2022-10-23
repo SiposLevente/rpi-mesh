@@ -5,7 +5,7 @@ if [[ "$status" == "" ]];then
     if [[ ${first_arg::1} == "w" ]];then
         nmcli d disconnect $1
     fi
-    sudo ip link set $1 down
+    ip link set $1 down
 else
-    sudo ip link set $1 up 
+    ip link set $1 up 
 fi
