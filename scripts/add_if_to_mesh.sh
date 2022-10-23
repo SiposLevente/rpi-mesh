@@ -1,2 +1,3 @@
 #!/bin/bash
-sudo batctl if add $1
+batctl if add $1
+echo "batctl if add $1" >> `dinrame $0`/start_node.sh
