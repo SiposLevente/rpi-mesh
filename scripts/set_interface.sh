@@ -12,6 +12,8 @@ case $1 in
         ;;
     "dhcp")
         echo -en $"\nauto $2\n  iface $2 inet dhcp\n\n" >> $interfaces_file
+        echo -en $"dhcplient -r $2" >> /etc/node-scripts/start_node.sh
+        echo -en $"dhclient $2" >> /etc/node-scripts/start_node.sh
         sed -i "/^$/N;/^\n$/D" $interfaces_file
         ;;
     "avahi")
