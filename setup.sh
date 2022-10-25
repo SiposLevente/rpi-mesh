@@ -18,11 +18,12 @@ apt update
 echo "Installing essential packages..."
 apt install -y git apache2 php wget batctl bridge-utils hostapd build-essential net-tools netfilter-persistent gcc make ssh network-manager
 systemctl unmask hostapd.service
+systemctl disable hostapd.service
 systemctl stop hostapd.service
 systemctl enable ssh
+systemctl start ssh
 systemctl enable NetworkManager
 systemctl start NetworkManager
-systemctl start ssh
 rfkill unblock 0
 
 echo "noarp" >> /etc/dhcpcd.conf
