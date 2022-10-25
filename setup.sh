@@ -28,6 +28,9 @@ rfkill unblock 0
 
 echo "noarp" >> /etc/dhcpcd.conf
 echo "noipv4ll" >> /etc/dhcpcd.conf
+
+echo -en "interface eth0\nstatic ip_address=192.168.189.254/24" >> /etc/dhcpcd.con
+
 systemctl stop dhcpcd
 systemctl start dhcpcd
 
