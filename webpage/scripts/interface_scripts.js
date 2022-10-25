@@ -7,7 +7,7 @@ $.ajax({
     url: "./scripts/interfaceIp.php",
 })
     .done(function (response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
+        var data_entries = get_data_entries(response);
         var selector = document.getElementById("selector");
         var remove_ip_selector = document.getElementById("remove_ip_interface");
         for (var i = 0; i < data_entries.length; i++) {
@@ -46,7 +46,7 @@ function updated_interfaces() {
         url: "./scripts/interfaceIp.php",
     })
         .done(function (response) {
-            var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
+            var data_entries = get_data_entries(response);
             for (var i = 0; i < data_entries.length; i++) {
 
                 var split_data = data_entries[i].split("/");
@@ -68,6 +68,9 @@ function updated_interfaces() {
         });
 }
 
+function get_data_entries(response) {
+    return response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" && element.includes(":") });
+}
 
 function set_input() {
     if (interfaces[selector.selectedIndex].ip != IP_PLACEHOLDER) {

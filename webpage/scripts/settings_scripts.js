@@ -1,12 +1,13 @@
 const IP_PLACEHOLDER = "xxx.xxx.xxx.xxx";
 var interfaces = [];
 
+
 $.ajax({
     method: "POST",
     url: "./scripts/interfaceIp.php",
 })
     .done(function (response) {
-        var data_entries = response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" });
+        var data_entries = get_data_entries(response);
         var ap_selector = document.getElementById("ap_selector");
         var ssid_interface_selector = document.getElementById("ssid_interface_selector");
 
@@ -44,6 +45,10 @@ window.onload = function () {
 
 setInterval(ap_status, 2500);
 
+function get_data_entries(response) {
+    return response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" && element.includes(":") });
+}
+
 function get_ssids() {
     $.ajax({
         method: "POST",
@@ -51,12 +56,12 @@ function get_ssids() {
     })
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
-            if (!ssid_selector.disabled){
+            if (!ssid_selector.disabled) {
                 ssid_selector.disabled = false;
             }
-            
+
             if (response != "") {
-                var data_entries = response.replaceAll("SSID: ", "").split("\n").filter(function (element) { return element != "" });
+                var data_entries = get_data_entries(response);
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
                 document.getElementById("ssid").disabled = false;
