@@ -1,5 +1,8 @@
 <?php
 $interface = $_POST["interfaces"];
+if ($interface == "") {
+    $interface = "no_interface";
+}
 $ssid = $_POST["ap_name"];
 $c_code = $_POST["country_code"];
 $mode = $_POST["wifi_mode"];
