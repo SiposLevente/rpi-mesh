@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ $7 != "" ]];then
+if [[ $7 != "none" ]];then
     $bridge="bridge=$7\n"
 fi
 
