@@ -1,7 +1,9 @@
 const IP_PLACEHOLDER = "xxx.xxx.xxx.xxx";
 var interfaces = [];
 var bridges = "";
-
+updateBridgeList();
+setInterval(ap_status, 2500);
+setInterval(updateBridgeList, 2500);
 
 $.ajax({
     method: "POST",
@@ -45,15 +47,9 @@ window.onload = function () {
     }
 };
 
-setInterval(ap_status, 2500);
-
-
-updateBridgeList();
-
-
 function bridge_rule(interface_name) {
     var return_value = false;
-    if (bridges.includes(interface_name)) {
+    if (bridges.includes(interface_name.interface)) {
         return_value = true;
     }
     return return_value;
@@ -74,7 +70,7 @@ function set_selector(selector_name, rule) {
     for (let index = 0; index < interfaces.length; index++) {
         var interf = interfaces[index]
         if (rule(interf)) {
-            selector.options[selector.options.length] = new Option(interf, interf);
+            selector.options[selector.options.length] = new Option(interf.interface, interf.interface);
         }
     }
 }
