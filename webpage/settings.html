@@ -42,11 +42,16 @@
                 <input id="country_code" placeholder="US" maxlength="2" minlength="1" size="2" name="country_code"
                     type="text" required>
                 <br>
-                <label for="wifi_mode">Select interface to configure access point on:</label>
+                <label for="wifi_mode">Select wifi mode:</label>
                 <select id="wifi_mode" name="wifi_mode" id="wifi_mode">
                     <option value="a">a</option>
                     <option value="b">b</option>
                     <option selected="selected" value="g">g</option>
+                </select>
+                <br>
+                <label for="bridge_wifi">Select interface to bridge access point on: </label>
+                <select id="bridge_wifi" name="bridge_wifi" id="bridge_wifi">
+                    <option value="none">none</option>
                 </select>
                 <br>
                 <label for="channel">Channel: </label>

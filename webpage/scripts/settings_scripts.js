@@ -32,7 +32,8 @@ $.ajax({
                 ssid_interface_selector.options[ssid_interface_selector.options.length] = new Option(interfaces[i].interface, interfaces[i].interface);
             }
         }
-        get_ssids()
+        set_selector("bridge_wifi", bridge_rule);
+        get_ssids();
     });
 
 window.onload = function () {
@@ -44,6 +45,39 @@ window.onload = function () {
 };
 
 setInterval(ap_status, 2500);
+
+
+updateBridgeList();
+
+
+function bridge_rule(interface_name) {
+    var return_value = false;
+    if (bridges.includes(interface_name)) {
+        return_value = true;
+    }
+    return return_value;
+}
+
+function updateBridgeList() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/list_bridge.php",
+    })
+        .done(function (response) {
+            bridges = response;
+        });
+}
+
+function set_selector(selector_name, rule) {
+    var selector = document.getElementById(selector_name);
+    for (let index = 0; index < interfaces.length; index++) {
+        var interf = interfaces[index]
+        if (rule(interf)) {
+            selector.options[selector.options.length] = new Option(interf, interf);
+        }
+    }
+}
+
 
 function get_data_entries(response) {
     return response.replaceAll(/<.?p>|<.?span>/gm, "").split("\n").filter(function (element) { return element != "" && element.includes(":") });
