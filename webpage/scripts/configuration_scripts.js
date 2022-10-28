@@ -1,6 +1,6 @@
 var interfaces = [];
 var mesh_interfaces = [];
-var bridges;
+var bridges = "";
 
 $.ajax({
     method: "POST",

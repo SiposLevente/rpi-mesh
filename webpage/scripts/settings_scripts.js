@@ -1,5 +1,6 @@
 const IP_PLACEHOLDER = "xxx.xxx.xxx.xxx";
 var interfaces = [];
+var bridges = "";
 
 
 $.ajax({
