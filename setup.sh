@@ -41,8 +41,7 @@ echo "Enabling persistency service for mesh node..."
 systemctl daemon-reload
 systemctl enable mesh-node-persistency.service
 
-is_in_file=`grep "batman-adv" /etc/modules`
-if [[ $is_in_file != "batman-adv" ]];then
+if [[ $1 == "upgrade" ]];then
   echo "Getting B.A.T.M.A.N-advanced package..."
   wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
   echo "Extracting B.A.T.M.A.N-advanced..."
@@ -54,9 +53,13 @@ if [[ $is_in_file != "batman-adv" ]];then
   depmod -a
   echo "Adding B.A.T.M.A.N-advanced kernel module..."
   modprobe batman-adv
-  echo "batman-adv" >> /etc/modules
   cd ..
   rm -rd batman-adv-*
+fi
+
+is_in_file=`grep "batman-adv" /etc/modules`
+if [[ $is_in_file != "batman-adv" ]];then
+  echo "batman-adv" >> /etc/modules
 fi
 
 is_in_file=`grep "net.ipv4.ip_forward=1" /etc/sysctl.conf`
