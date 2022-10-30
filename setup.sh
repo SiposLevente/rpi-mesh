@@ -79,3 +79,5 @@ do
     echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
   fi
 done
+echo "Setup script finished!"
+exit 0
