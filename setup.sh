@@ -41,7 +41,8 @@ echo "Enabling persistency service for mesh node..."
 systemctl daemon-reload
 systemctl enable mesh-node-persistency.service
 
-if [[ $1 == "upgrade" ]];then
+is_in_file=`grep "batman-adv" /etc/modules`
+if [[ $1 == "upgrade" || $is_in_file != "batman-adv" ]];then
   echo "Getting B.A.T.M.A.N-advanced package..."
   wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
   echo "Extracting B.A.T.M.A.N-advanced..."
@@ -57,7 +58,6 @@ if [[ $1 == "upgrade" ]];then
   rm -rd batman-adv-*
 fi
 
-is_in_file=`grep "batman-adv" /etc/modules`
 if [[ $is_in_file != "batman-adv" ]];then
   echo "batman-adv" >> /etc/modules
 fi
