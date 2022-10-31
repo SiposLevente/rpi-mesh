@@ -29,11 +29,6 @@ rfkill unblock 0
 echo "noarp" >> /etc/dhcpcd.conf
 echo "noipv4ll" >> /etc/dhcpcd.conf
 
-echo -en "interface eth0\nstatic ip_address=192.168.189.254/24" >> /etc/dhcpcd.con
-
-systemctl stop dhcpcd
-systemctl start dhcpcd
-
 echo "Copying persistency service for mesh node..."
 cp mesh-node-persistency.service /etc/systemd/system
 
@@ -42,7 +37,7 @@ systemctl daemon-reload
 systemctl enable mesh-node-persistency.service
 
 is_in_file=`grep "batman-adv" /etc/modules`
-if [[ $is_in_file != "batman-adv" ]];then
+if [[ $1 == "upgrade" || $is_in_file != "batman-adv" ]];then
   echo "Getting B.A.T.M.A.N-advanced package..."
   wget https://downloads.open-mesh.org/batman/releases/$latest_batman/$latest_batman.tar.gz
   echo "Extracting B.A.T.M.A.N-advanced..."
@@ -54,9 +49,12 @@ if [[ $is_in_file != "batman-adv" ]];then
   depmod -a
   echo "Adding B.A.T.M.A.N-advanced kernel module..."
   modprobe batman-adv
-  echo "batman-adv" >> /etc/modules
   cd ..
   rm -rd batman-adv-*
+fi
+
+if [[ $is_in_file != "batman-adv" ]];then
+  echo "batman-adv" >> /etc/modules
 fi
 
 is_in_file=`grep "net.ipv4.ip_forward=1" /etc/sysctl.conf`
@@ -81,3 +79,5 @@ do
     echo "www-data ALL = NOPASSWD: /etc/node-scripts/${file##*/}" >> /etc/sudoers
   fi
 done
+echo "Setup script finished!"
+exit 0
