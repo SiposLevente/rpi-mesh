@@ -2,7 +2,9 @@ const IP_PLACEHOLDER = "xxx.xxx.xxx.xxx";
 var interfaces = [];
 var bridges = "";
 updateBridgeList();
+get_current_connection_ssid();
 setInterval(ap_status, 2500);
+setInterval(get_current_connection_ssid, 1000);
 setInterval(updateBridgeList, 2500);
 
 $.ajax({
@@ -87,12 +89,12 @@ function get_ssids() {
     })
         .done(function (response) {
             var ssid_selector = document.getElementById("ssid");
-            if (!ssid_selector.disabled) {
-                ssid_selector.disabled = false;
-            }
+
+
 
             if (response != "") {
-                var data_entries = get_data_entries(response);
+                var data_entries = response.split("\n").filter(function (element) { return element != "" });
+                ssid_selector.disabled = false;
                 document.getElementById("ssid_warning").innerHTML = "";
                 document.getElementById("ssid_interface_selector").disabled = false;
                 document.getElementById("ssid").disabled = false;
@@ -146,19 +148,20 @@ $.ajax({
         document.getElementById("password").value = response;
     });
 
-$.ajax({
-    method: "POST",
-    url: "./scripts/get_current_connection.php",
-})
-    .done(function (response) {
-        var current_connecetions = document.getElementById("current_connection");
-        if (response != "") {
-            current_connecetions.innerHTML = response;
-        } else {
-            current_connecetions.innerHTML = "No active wireless conenction!";
-        }
-    });
-
+function get_current_connection_ssid() {
+    $.ajax({
+        method: "POST",
+        url: "./scripts/get_current_connection.php",
+    })
+        .done(function (response) {
+            var current_connecetions = document.getElementById("current_connection");
+            if (response != "") {
+                current_connecetions.innerHTML = response;
+            } else {
+                current_connecetions.innerHTML = "No active wireless conenction!";
+            }
+        });
+}
 function ap_status() {
     $.ajax({
         method: "POST",
