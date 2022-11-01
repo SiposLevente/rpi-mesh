@@ -2,8 +2,6 @@
     font-family: 'Trebuchet MS', sans-serif;
 }
 
-
-
 body,
 html {
     width: 100%;
@@ -24,7 +22,8 @@ html {
 .top_img {
     position: fix;
     width: 3vw;
-
+    margin-top: 0.3vw;
+    margin-left: 0.3vw;
 }
 
 .leftpane {
