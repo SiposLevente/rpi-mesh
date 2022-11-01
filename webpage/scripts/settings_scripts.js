@@ -158,7 +158,7 @@ function get_current_connection_ssid() {
             if (response != "") {
                 current_connecetions.innerHTML = response;
             } else {
-                current_connecetions.innerHTML = "No active wireless conenction!";
+                current_connecetions.innerHTML = "No active wireless connection!";
             }
         });
 }
