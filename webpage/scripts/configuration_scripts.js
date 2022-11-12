@@ -51,7 +51,7 @@ setInterval(updateBridgeList, 5000);
 
 function bridge_rule(interface_name) {
     var return_value = false;
-    if (bridges.includes(interface_name)){
+    if (bridges.includes(interface_name)) {
         return_value = true;
     }
     return return_value;
@@ -87,7 +87,7 @@ function set_selector(selector_name, rule) {
     var selector = document.getElementById(selector_name);
     for (let index = 0; index < interfaces.length; index++) {
         var interf = interfaces[index]
-        if (rule(interf)) {
+        if (rule(interf) && !interf.includes(".")) {
             selector.options[selector.options.length] = new Option(interf, interf);
         }
     }
