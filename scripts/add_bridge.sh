@@ -13,4 +13,5 @@ echo "ip link set dev $2 master $3" >> /etc/node-scripts/start_node.sh
 echo "ip link set up dev $1" >> /etc/node-scripts/start_node.sh
 echo "ip link set up dev $2" >> /etc/node-scripts/start_node.sh
 echo "ip link set up dev $3" >> /etc/node-scripts/start_node.sh
+echo "dhclient $3" >> /etc/node-scripts/start_node.sh
 echo -en "\n" >> /etc/node-scripts/start_node.sh
