@@ -12,4 +12,4 @@ systemctl restart networking
 systemctl restart dhcpcd
 ip link set $1 down
 ip link set $1 up
-sleep 10
+sleep 1
